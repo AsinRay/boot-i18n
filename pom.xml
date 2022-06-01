@@ -6,6 +6,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>accept-header</module>
+        <module>session-scope</module>
+        <module>common</module>
     </modules>
 
     <parent>
