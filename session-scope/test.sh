@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # export ETCDCTL_API=2
 HOST=127.0.0.1
 ENDPOINTS=http://$HOST:8000
@@ -45,6 +44,18 @@ echo "测试 4 Header:"'Accept-Language: en-US,en;q=0.5'
 curl -w '\n' \
 -H 'Content-Type: application/json' \
 -H 'Accept-Language: en-US,en;q=0.5' --compressed \
+-X POST -d $JSON \
+$URI'?lang=zh-CN'
+
+
+echo
+echo "测试 5 Header Accept-Language:en_US， Lang: en_US 时 指定Params中lang为 zh-CN"
+echo "测试 5 URI:"$URI'?lang=zh-CN'
+echo "测试 5 Header:"'Accept-Language: en-US,en;q=0.5'' ''lang: en_US'
+curl -w '\n' \
+-H 'Content-Type: application/json' \
+-H 'Accept-Language: en-US,en;q=0.5' --compressed \
+-H 'lang: en_US' \
 -X POST -d $JSON \
 $URI'?lang=zh-CN'
 
